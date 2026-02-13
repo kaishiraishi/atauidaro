@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const hotRes = await fetch('https://api.countapi.xyz/get/' + namespace + '/hot').catch(() => null);
             const coldRes = await fetch('https://api.countapi.xyz/get/' + namespace + '/cold').catch(() => null);
-            
+
             if (hotRes && hotRes.ok) {
                 const data = await hotRes.json();
                 hotCount = data.value || 0;
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = await coldRes.json();
                 coldCount = data.value || 0;
             }
-            
+
             updateDisplay();
         } catch (e) {
             console.error('Fetch error:', e);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function vote(type) {
-        if(type === 'hot') hotCount++;
+        if (type === 'hot') hotCount++;
         else coldCount++;
         updateDisplay();
 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const total = hotCount + coldCount;
         const hotPercent = total > 0 ? Math.round((hotCount / total) * 100) : 50;
         const coldPercent = total > 0 ? Math.round((coldCount / total) * 100) : 50;
-        
+
         // 投票数表示
         valCold.textContent = coldCount;
         valHot.textContent = hotCount;
@@ -65,10 +65,22 @@ document.addEventListener('DOMContentLoaded', () => {
         gaugeCold.style.width = coldPercent + '%';
         gaugeHot.style.width = hotPercent + '%';
 
+        // 空調温度の自動計算（25℃を基準）
+        const baseTemp = 25;
+        const maxAdjustment = 5; // 最大±5℃の調整
+        // hotPercentが50%より高い→温度を上げる、coldPercentが50%より高い→温度を下げる
+        const adjustment = ((hotPercent - 50) / 50) * maxAdjustment;
+        const recommendedTemp = Math.round((baseTemp + adjustment) * 10) / 10; // 小数点1桁
+
+        const currentTempElement = document.getElementById('current-temp');
+        if (currentTempElement) {
+            currentTempElement.textContent = recommendedTemp.toFixed(1);
+        }
+
         // 優勢表示の更新
         const diff = Math.abs(hotCount - coldCount);
         const diffPercent = Math.abs(hotPercent - coldPercent);
-        
+
         if (diffPercent < 5) {
             // 均衡状態
             dominantIndicator.className = 'dominant-indicator neutral';
@@ -80,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 暑い派優勢
             dominantIndicator.className = 'dominant-indicator hot-dominant';
             dominantIndicator.querySelector('.dominant-icon').textContent = '🥵';
-            
+
             if (diffPercent < 15) {
                 dominantIndicator.querySelector('.dominant-text').textContent = '暑い派やや優勢';
                 statusText.textContent = 'ちょっと暑いかも...';
@@ -96,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 寒い派優勢
             dominantIndicator.className = 'dominant-indicator cold-dominant';
             dominantIndicator.querySelector('.dominant-icon').textContent = '🥶';
-            
+
             if (diffPercent < 15) {
                 dominantIndicator.querySelector('.dominant-text').textContent = '寒い派やや優勢';
                 statusText.textContent = 'ちょっと肌寒い...';
