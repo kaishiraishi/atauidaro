@@ -30,11 +30,70 @@ main {
     margin-bottom: 2rem;
 }
 
+/* 優勢表示インジケーター */
+.dominant-indicator {
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+    border: 3px solid transparent;
+}
+
+.dominant-icon {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.dominant-text {
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.dominant-indicator.neutral {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    border-color: #999;
+}
+
+.dominant-indicator.neutral .dominant-text {
+    color: #666;
+}
+
+.dominant-indicator.hot-dominant {
+    background: linear-gradient(135deg, #ffe5e5, #ffcccc);
+    border-color: #ff0606;
+    box-shadow: 0 0 30px rgba(255, 6, 6, 0.3);
+}
+
+.dominant-indicator.hot-dominant .dominant-text {
+    color: #ff0606;
+    text-shadow: 0 0 10px rgba(255, 6, 6, 0.3);
+}
+
+.dominant-indicator.cold-dominant {
+    background: linear-gradient(135deg, #e5f2ff, #cce5ff);
+    border-color: #0072ff;
+    box-shadow: 0 0 30px rgba(0, 114, 255, 0.3);
+}
+
+.dominant-indicator.cold-dominant .dominant-text {
+    color: #0072ff;
+    text-shadow: 0 0 10px rgba(0, 114, 255, 0.3);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 .battle-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-weight: bold;
 }
 
@@ -48,9 +107,28 @@ main {
     font-size: 1.2rem;
 }
 
+.side-info .icon {
+    font-size: 2.5rem;
+}
+
+.vote-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
 .vote-count {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-family: monospace;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.vote-percent {
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.8;
 }
 
 .vs-badge {

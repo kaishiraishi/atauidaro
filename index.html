@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>体感温度バトル - GitHub Pages</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <h1>あつい？さむい？体感温度バトル</h1>
-        <p>今は暑い？寒い？ボタンを押して投票しよう！</p>
-    </header>
+
     <main>
         <!-- VS ゲージエリア -->
         <div class="battle-container">
+            <!-- 大きな優勢表示 -->
+            <div id="dominant-indicator" class="dominant-indicator">
+                <div class="dominant-icon">⚖️</div>
+                <div class="dominant-text">均衡</div>
+            </div>
+
             <div class="battle-header">
                 <div class="side-info cold-info">
                     <span class="icon">🥶</span>
-                    <span class="vote-count" id="val-cold">0</span>
+                    <div class="vote-info">
+                        <span class="vote-count" id="val-cold">0</span>
+                        <span class="vote-percent" id="percent-cold">50%</span>
+                    </div>
                     <span class="label">COLD</span>
                 </div>
                 <div class="vs-badge">VS</div>
                 <div class="side-info hot-info">
                     <span class="label">HOT</span>
-                    <span class="vote-count" id="val-hot">0</span>
+                    <div class="vote-info">
+                        <span class="vote-count" id="val-hot">0</span>
+                        <span class="vote-percent" id="percent-hot">50%</span>
+                    </div>
                     <span class="icon">🥵</span>
                 </div>
             </div>
@@ -37,9 +48,9 @@
                 </div>
                 <div class="gauge-center-line"></div>
             </div>
-            
+
             <div id="status-text" class="status-text">読み込み中...</div>
-            
+
             <!-- 空調設定エリア -->
             <div class="ac-info-panel">
                 <span class="ac-label">現在の空調設定:</span>
@@ -65,4 +76,5 @@
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>
