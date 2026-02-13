@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         gaugeCold.style.width = coldPercent + '%';
         gaugeHot.style.width = hotPercent + '%';
 
-        // 空調温度の自動計算（25℃を基準）
-        const baseTemp = 25;
-        const maxAdjustment = 5; // 最大±5℃の調整
+        // 空調温度の自動計算（27℃を基準）
+        const baseTemp = 27;
+        const maxAdjustment = 7; // 最大±7℃の調整
         // hotPercentが50%より高い→温度を上げる、coldPercentが50%より高い→温度を下げる
         const adjustment = ((hotPercent - 50) / 50) * maxAdjustment;
         const recommendedTemp = Math.round((baseTemp + adjustment) * 10) / 10; // 小数点1桁
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (diffPercent < 15) {
                 dominantIndicator.querySelector('.dominant-text').textContent = '暑い派やや優勢';
-                statusText.textContent = 'ちょっと暑いかも...';
+                statusText.textContent = '暑い派がやや優勢です';
             } else if (diffPercent < 30) {
                 dominantIndicator.querySelector('.dominant-text').textContent = '暑い派優勢！';
                 statusText.textContent = '暑い！エアコン強めて！';
