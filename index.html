@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体感温度投票 - GitHub Pages</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>みんなの体感温度</h1>
+        <p>今は暑い？寒い？ボタンを押して投票しよう！</p>
+    </header>
+    <main>
+        <div class="meter-container">
+            <div class="meter-label cold">寒</div>
+            <div class="meter-bar-bg">
+                <div id="indicator" class="indicator"></div>
+                <div class="center-line"></div>
+            </div>
+            <div class="meter-label hot">暑</div>
+        </div>
+        
+        <div id="status-text" class="status-text">ちょうどいい</div>
+        <div id="score-display" class="score">Score: 0</div>
+
+        <div class="button-area">
+            <button id="btn-cold" class="vote-btn cold-btn">
+                🥶 寒いだろ
+            </button>
+            <button id="btn-hot" class="vote-btn hot-btn">
+                🥵 暑いだろ
+            </button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 Temperature Check</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

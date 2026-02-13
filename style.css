@@ -1,0 +1,110 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 2rem 1rem;
+}
+
+main {
+    padding: 2rem;
+    max-width: 600px;
+    margin: -30px auto 20px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 12px;
+}
+
+/* メーター部分 */
+.meter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 2rem 0;
+}
+
+.meter-label {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cold { color: #3.meter-label.cp: 0;
+    bottom: 0;
+    width: 2px;
+    background: #aaa;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.indicator {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* 初期位置は中央 */
+    width: 0%; /* 幅で伸びを表現 */
+    background: #333;
+    transition: all 0.3s ease-out;
+    z-index: 1;
+}
+
+/* 状態表示 */
+.status-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.score {
+    color: #777;
+    margin-bottom: 2rem;
+}
+
+/* ボタン */
+.button-area {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.vote-btn {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.vote-btn:active {
+    transform: scale(0.95);
+}
+
+.cold-btn {
+    background: #3498db;
+}
+.cold-btn:hover {
+    background: #2980b9;
+}
+
+.hot-btn {
+    background: #e74c3c;
+}
+.hot-btn:hover {
+    background: #c0392b;
+}
+
+footer {
+    padding: 1rem;
+    color: #888;
+}
